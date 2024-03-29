@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block main %}
+
+
+    <div class="card text-center">
+        <div class="card-header">
+            <h4>About</h4>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">ArtGallery</h5>
+            <p class="card-text">
+                Welcome to ArtGallery, where creativity meets inspiration. Founded in 2024, our gallery
+                has been a beacon for art lovers, collectors, and enthusiasts alike, showcasing a diverse collection of
+                artworks from both established and emerging artists around the world.Our Mission
+
+                At ArtGallery, our mission is simple: to celebrate and promote the beauty and power of art
+                in all its forms. We believe that art has the ability to inspire, provoke thought, and evoke emotion,
+                transcending language and cultural barriers to connect people on a deeper level.</p>
+            {% if not request.user.is_authenticated %}
+                <a href="{% url 'register' %}" class="btn btn-primary">Join now</a>
+            {% endif %}
+            <hr>
+            <h5 class="card-title"> Our Collection</h5>
+
+            <p>Spanning a wide range of mediums, styles, and subjects, our collection reflects the rich tapestry of
+                human creativity and expression. From vibrant paintings and intricate sculptures to captivating
+                photography and innovative digital art, each artwork in our gallery tells a unique story and invites
+                viewers to embark on a journey of discovery and contemplation.</p>
+            <hr>
+            <h5 class="card-title"> Supporting Artists</h5>
+
+            <p>Central to our mission is our commitment to supporting artists and fostering creativity. We provide a
+                platform for artists to showcase their work, connect with art enthusiasts, and gain recognition for
+                their talent and vision. Through exhibitions, events, and online promotions, we strive to amplify the
+                voices of artists and provide them with opportunities to thrive and grow.</p>
+
+            <hr>
+            <h5 class="card-title"> Contact Us</h5>
+
+            <p>Have questions or inquiries? We'd love to hear from you! Feel free to contact us via email, phone, or
+                visit our gallery in person. Our friendly team is here to assist you and ensure that your experience at
+                ArtGallery is nothing short of exceptional.
+
+                Thank you for visiting ArtGallery. We look forward to welcoming you into our creative world
+                and sharing the joy of art with you.</p>
+
+
+            <div class="card" style="width: 25rem;margin-left: 750px; margin-top: 50px;margin-bottom: 22px">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Email : abracadabra@abv.bg</li>
+                    <li class="list-group-item">Phone numbers : (555) 123-4567 ;
+                        (555) 987-6543 ;
+                        (555) 555-5555 ;
+                    </li>
+                    <li class="list-group-item">Address : ArtGalley
+                        123 Gallery Avenue
+                        Artville, AR 12345
+                        United States.
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+        <div class="card-footer text-body-secondary">
+
+        </div>
+    </div>
+
+
+{% endblock %}

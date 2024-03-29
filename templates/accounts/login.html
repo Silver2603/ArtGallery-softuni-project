@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block main %}
+
+
+    <div class="card text-bg-dark">
+        <img style="height: 840px"
+             src="https://sothebys-com.brightspotcdn.com/dims4/default/091f729/2147483647/strip/false/crop/3746x2107+0+0/resize/1200x675!/quality/90/?url=http%3A%2F%2Fsothebys-brightspot.s3.amazonaws.com%2Fdotcom%2F0f%2Fbe%2F9a218f5544b4b35589c32fe0e498%2Ffiddian-green-6.jpg"
+             class="card-img" alt="...">
+        <div class="card-img-overlay">
+            <div class="card text-bg-light mb-3 card col-6 offset-4"
+                 style="max-width: 35rem; height: 30rem;margin-top: 100px">
+                <div class="card-header" style="text-align: center"><h3>Login</h3></div>
+                <div class="card-body">
+                    <form action="{% url 'login' %}" method="post">
+
+                        {% csrf_token %}
+                        <hr style="margin: 30px; border-color: white">
+                        <a style="margin-left: 50px">{{ form.username.label }} : {{ form.username }}</a><br>
+                        <hr style="margin: 30px">
+
+                        <a style="margin-left: 50px">{{ form.password.label }} : {{ form.password }}</a>
+                        <hr style="margin: 30px">
+
+                        <button style="margin-left: 215px; margin-top: 15px"
+                                class="btn btn-primary btn-lg">Log
+                            In
+                        </button>
+                        <hr style="margin-top: 35px">
+                        <p style="text-align: center;">If you dont have an account click here: <a href="{% url 'register' %}">Register</a></p>
+
+                    </form>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
