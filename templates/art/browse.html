@@ -1,54 +1,56 @@
 {% extends "base.html" %}
 {% block main %}
+    {% if artpiece_list %}
+        {% for art in artpiece_list %}
+            <div class="card border-dark mb-3"
+                 style="max-width: 200rem;margin: 530px;margin-top: 50px;margin-bottom: 50px">
+                <div class="card-header" style="text-align: center"><h5>
+                    <a href="{% url 'profile_details' slug=art.user.username pk=art.user.pk %}">{{ art.user.username }}</a>
+                </h5>  <a
+                        href="{% url 'home' %}">Add to favourites!!!</a></div>
+                <div class="card-body">
+                    <div class="card mb-3" style="border-color: white">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img style="width: 600px; height: 450px"
+                                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/220px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"
+                                     class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div style="margin-left: 50px" class="card-body">
+                                    <h5 style="font-size: 22px" class="card-title">Title : <span
+                                            style="font-size: 19px">{{ art.title }}</span>
+                                    </h5>
 
-    <div class="card border-dark mb-3" style="max-width: 200rem;margin: 530px;margin-top: 50px;margin-bottom: 50px">
-        <div class="card-header">Username!! <a style="margin-left: 600px" href="{% url 'home' %}">Add to
-            favourites!!!</a></div>
-        <div class="card-body">
-            <div class="card mb-3" style="border-color: white">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img style="width: 600px; height: 450px"
-                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/220px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"
-                             class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div style="margin-left: 50px" class="card-body">
-                            <h5 style="font-size: 22px" class="card-title">Title : <span style="font-size: 19px">Mona Lisa</span>
-                            </h5>
+                                    <h5 style="font-size: 22px" class="card-title">Artist : <span
+                                            style="font-size: 19px">{{ art.artist }}</span>
+                                    </h5>
 
-                            <h5 style="font-size: 22px" class="card-title">Artist : <span style="font-size: 19px">Leonardo DaVinci</span>
-                            </h5>
+                                    <h5 style="font-size: 22px" class="card-title">Type : <span
+                                            style="font-size: 19px">{{ art.type_of_artwork }}</span></h5>
 
-                            <h5 style="font-size: 22px" class="card-title">Type : <span
-                                    style="font-size: 19px">Drawing</span></h5>
+                                    <h5 style="font-size: 22px" class="card-title">Price :<span
+                                            style="font-size: 19px"> {{ art.price }}</span></h5>
 
-                            <h5 style="font-size: 22px" class="card-title">Price :<span
-                                    style="font-size: 19px"> 100 000</span></h5>
-                            
-                            <h5 style="font-size: 22px" class="card-title">Description : <span style="font-size: 19px">The Mona Lisa (/ˌmoʊnə ˈliːsə/ MOH-nə LEE-sə; Italian:
-                                Gioconda  or Monna Lisa ) is a
-                                half-length portrait painting by Italian artist Leonardo da Vinci. Considered an
-                                archetypal masterpiece of the Italian Renaissance,] it has been described as "the
-                                best known, the most visited, the most written about, the most sung about, [and] the
-                                most parodied work of art in the world".The painting's novel qualities include the
-                                subject's enigmatic expression, monumentality of the composition, the subtle
-                                modelling of forms, and the atmospheric illusionism.</span></h5>
+                                    <h5 style="font-size: 22px" class="card-title">Description : <span
+                                            style="font-size: 19px">{{ art.description }}</span></h5>
 
 
-                            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins!!!!
+                                        ago</small>
+                                    </p>
+                                </div>
+                            </div>
+                            <hr style="border-color: white">
+                            <h4 class="card-title">Comments~!!!</h4>
+                            <hr>
+                            <h5 class="card-title">User : blablabl aasdas dasd asda sd asdas da sdas asd asd qwre
+                                wer dfg fdger4t er dfgda</h5>
+                            <hr>
                         </div>
                     </div>
-                    <hr style="border-color: white">
-                    <h4 class="card-title">Comments~!!!</h4>
-                    <hr>
-                    <h5 class="card-title">User : blablabl aasdas dasd asda sd asdas da sdas asd asd qwre
-                        wer dfg fdger4t er dfgda</h5>
-                    <hr>
                 </div>
             </div>
-        </div>
-    </div>
-
-
+        {% endfor %}
+    {% endif %}
 {% endblock %}

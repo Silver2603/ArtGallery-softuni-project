@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+    <div class="card mb-3" style="max-width: 800px;margin-top: 85px;margin-left: 550px; border-color: black;border-width: 10px">
+    <h2 style="text-align: center; margin-top: 20px">EDIT</h2>
+    <hr style="border-width: 3px">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img {% if profile.profile_pic %} src="{{ profile.profile_pic }}"
+                {% else %} src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                {% endif %} class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <form action="{% url 'profile_edit' slug=request.user.username pk=request.user.pk %}" method="post" style="text-align: right; margin-right: 100px">
+                        {{ form.as_p }}
+                        {% csrf_token %}
+                        <button style="">Edit</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

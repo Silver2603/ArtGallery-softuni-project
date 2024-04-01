@@ -24,4 +24,5 @@ class ArtPiece(models.Model):
 
     price = models.FloatField(null=True, blank=True)
 
-    user = models.ForeignKey(UserModel, on_delete=models.CASCADE, primary_key=True)
+    user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
+
