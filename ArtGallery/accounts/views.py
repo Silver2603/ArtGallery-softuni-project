@@ -33,7 +33,7 @@ class UserProfileView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["artpieces"] = ArtPiece.objects.filter(user=self.request.user)
+        context["artpieces"] = ArtPiece.objects.filter(user=self.object.user)
         return context
 
 

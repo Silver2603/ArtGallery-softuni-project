@@ -1,3 +1,4 @@
+
 from django.contrib.auth import get_user_model
 from django.db import models
 
@@ -12,7 +13,7 @@ class ArtPiece(models.Model):
         ("Other", "Other")
     )
 
-    title = models.CharField(max_length=30, null=False, blank=False)
+    title = models.CharField(max_length=30, null=False, blank=False, unique=True)
 
     art_piece = models.URLField(null=False, blank=False, unique=True)
 

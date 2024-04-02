@@ -4,16 +4,17 @@
         {% for art in artpiece_list %}
             <div class="card border-dark mb-3"
                  style="max-width: 200rem;margin: 530px;margin-top: 50px;margin-bottom: 50px">
-                <div class="card-header" style="text-align: center"><h5>
-                    <a href="{% url 'profile_details' slug=art.user.username pk=art.user.pk %}">{{ art.user.username }}</a>
-                </h5>  <a
-                        href="{% url 'home' %}">Add to favourites!!!</a></div>
+                <div class="card-header" style="text-align: center">
+                    <h4>
+                        <a href="{% url 'profile_details' slug=art.user.username pk=art.user.pk %}">{{ art.user.username }}</a>
+                    </h4>
+                    </div>
                 <div class="card-body">
                     <div class="card mb-3" style="border-color: white">
                         <div class="row g-0">
                             <div class="col-md-4">
                                 <img style="width: 600px; height: 450px"
-                                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/220px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"
+                                     src="{{ art.art_piece }}"
                                      class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-md-8">
@@ -52,5 +53,12 @@
                 </div>
             </div>
         {% endfor %}
+    {% else %}
+        <div class="card text-bg-dark">
+            <img style="height: 845px"
+                 src="https://i0.wp.com/wpsites.net/wp-content/uploads/2013/05/no-posts-text1.png?fit=600%2C300&ssl=1"
+                 class="card-img" alt="...">
+
+        </div>
     {% endif %}
 {% endblock %}
