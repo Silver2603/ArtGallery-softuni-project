@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+
+    <div class="card mb-3"
+         style="max-width: 800px;margin-top: 20px;margin-left: 550px; border-color: black;border-width: 10px">
+        <h3 style="text-align: center; margin-top: 10px">EDIT</h3>
+        <hr style="border-width: 3px">
+        <div class="row g-0">
+            <div class="col-md-4">
+                
+                <img style="margin-left: 30px" src="{{ object.art_piece}}" class="img-fluid rounded-start" alt="...">
+                
+            </div>
+            <div class="col-md-8">
+                <div style="margin-left: 100px" class="card-body">
+                    <form action="{% url 'edit_art_piece' slug=object.title pk=object.id %}" method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="btn btn-info">Edit</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,4 +1,3 @@
-
 from django.contrib.auth import get_user_model
 from django.db import models
 
@@ -27,3 +26,14 @@ class ArtPiece(models.Model):
 
     user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
 
+
+class Comments(models.Model):
+    text = models.CharField(null=True, blank=True,max_length=200)
+    date_and_time_of_publication = models.DateTimeField(auto_now_add=True)
+    to_art_piece = models.ForeignKey(ArtPiece, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
+
+
+class Likes(models.Model):
+    to_art_piece = models.ForeignKey(ArtPiece, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserModel, on_delete=models.CASCADE)

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    <div class="card text-center mb-3" style="width: 25rem;margin-left: 750px; margin-top: 180px">
+        <div class="card-body">
+            <hr>
+            <h5 class="card-title">Are you sure you want to delete your ArtPiece?</h5>
+            <hr>
+            <form action="{% url 'delete_art_piece' slug=object.title pk=object.id %}" method="post">
+                {% csrf_token %}
+
+                <button class="btn btn-info">Yes</button>
+            </form>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}

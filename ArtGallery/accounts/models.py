@@ -7,7 +7,6 @@ from django.utils.translation import gettext_lazy as _
 
 
 class ArtGalleryUser(AbstractBaseUser, PermissionsMixin):
-
     username_validator = UnicodeUsernameValidator()
 
     username = models.CharField(
@@ -37,7 +36,6 @@ class ArtGalleryUser(AbstractBaseUser, PermissionsMixin):
 
 
 class Profile(models.Model):
-
     first_name = models.CharField(max_length=30, blank=True, null=True)
     last_name = models.CharField(max_length=30, blank=True, null=True)
 

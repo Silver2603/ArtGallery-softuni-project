@@ -16,7 +16,7 @@
                     <form action="{% url 'profile_edit' slug=request.user.username pk=request.user.pk %}" method="post" style="text-align: right; margin-right: 100px">
                         {{ form.as_p }}
                         {% csrf_token %}
-                        <button style="">Edit</button>
+                        <button class="btn btn-info">Edit</button>
                     </form>
 
                 </div>
