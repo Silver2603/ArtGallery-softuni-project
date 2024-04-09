@@ -109,7 +109,7 @@
                                     <h6 class="mb-0">Total Art Pieces</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    {{ artpieces.count }}
+                                    {{ art_pieces.count }}
                                 </div>
                             </div>
                             <hr>
@@ -118,7 +118,7 @@
                                     <h6 class="mb-0">Total Likes</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    0!
+                                    {{ total_likes }}
                                 </div>
                             </div>
                             <hr>
@@ -127,7 +127,7 @@
                                     <h6 class="mb-0">Total Comments</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    0!
+                                    {{ profile.user.comments_set.all.count }}
                                 </div>
                             </div>
                             <hr>

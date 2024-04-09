@@ -10,7 +10,7 @@
             <form action="{% url 'delete_art_piece' slug=object.title pk=object.id %}" method="post">
                 {% csrf_token %}
 
-                <button class="btn btn-info">Yes</button>
+                <button class="btn btn-info">DELETE</button>
             </form>
 
         </div>
