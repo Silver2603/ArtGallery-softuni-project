@@ -1,14 +1,14 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
+
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from ArtGallery.accounts.mixins import CustomLoginRequiredMixin
-from ArtGallery.accounts.models import Profile
+
 from ArtGallery.art.forms import ArtPieceForm, CommentsForm, SearchForm
-from ArtGallery.art.models import ArtPiece, Comments, Likes
+from ArtGallery.art.models import ArtPiece, Likes
 
 UserModel = get_user_model()
 

@@ -3,7 +3,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from ArtGallery.accounts.models import Profile
-from ArtGallery.art.models import ArtPiece
+
 
 UserModel = get_user_model()
 

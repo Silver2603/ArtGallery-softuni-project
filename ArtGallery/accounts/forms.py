@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import BaseUserCreationForm, UserChangeForm, UserCreationForm
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 
-from ArtGallery.accounts.models import ArtGalleryUser, Profile
+from ArtGallery.accounts.models import Profile
 
 UserModel = get_user_model()
 
@@ -23,4 +23,3 @@ class ProfileForm(forms.ModelForm):
 class ArtGalleryUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
         model = UserModel
-
