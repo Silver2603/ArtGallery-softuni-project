@@ -1,7 +1,5 @@
 from django.core.exceptions import PermissionDenied
 
-from ArtGallery.art.models import ArtPiece
-
 
 class CustomLoginRequiredMixin:
     def get_object(self, queryset=None):

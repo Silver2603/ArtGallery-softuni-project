@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block search_bar %}
 
     <form style="margin-left: auto" class="d-flex" method="get">
@@ -9,89 +10,24 @@
 {% endblock %}
 
 {% block main %}
+    <link rel="stylesheet" href="{% static "collection_browse_css.css" %}">
+
     {% if art_pieces %}
         {% for art in art_pieces %}
-            <div class="card border-dark mb-3"
-                 style="max-width: 200rem;margin: 530px;margin-top: 50px;margin-bottom: 50px">
-                <div class="card-header" style="text-align: center">
-                    <h4>
-                        <a href="{% url 'add_like_to_art_piece' art_piece_id=art.id %}"> <img
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZUug8G9Ja_FHj0q0l-F-K3rmmkM5MAF8zFAFZE322wg&s"
-                                alt="" style="width: 40px; position: absolute; left: 25px"></a>
-                        <a style="text-decoration: none; color: black"
-                           href="{% url 'profile_details' slug=art.user.username pk=art.user.pk %}">{{ art.user.username }}</a>
-                        {% if request.user.pk == art.user.pk %}
-                            <a style="font-size: 20px;position: absolute;top: 10px; right: 10px" class="nav-link active"
-                               href="{% url 'delete_art_piece' slug=art.title pk=art.id %}"><i>Delete</i></a>
 
-                            <a style="font-size: 20px;position: absolute;top: 10px; right: 80px" class="nav-link active"
-                               href="{% url 'edit_art_piece' slug=art.title pk=art.id %}"><i>Edit</i></a>
-                        {% endif %}
-                    </h4>
-                </div>
-                <div class="card-body">
-                    <div class="card mb-3" style="border-color: white">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img style="width: 600px; height: 450px"
-                                     src="{{ art.art_piece }}"
-                                     class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div style="margin-left: 50px" class="card-body">
-                                    <h5 style="font-size: 22px" class="card-title">Title : <span
-                                            style="font-size: 19px">{{ art.title }}</span>
-                                    </h5>
-
-                                    <h5 style="font-size: 22px" class="card-title">Artist : <span
-                                            style="font-size: 19px">{{ art.artist }}</span>
-                                    </h5>
-
-                                    <h5 style="font-size: 22px" class="card-title">Type : <span
-                                            style="font-size: 19px">{{ art.type_of_artwork }}</span></h5>
-
-                                    <h5 style="font-size: 22px" class="card-title">Price :<span
-                                            style="font-size: 19px"> {{ art.price }}</span></h5>
-
-                                    <h5 style="font-size: 22px" class="card-title">Description : <span
-                                            style="font-size: 19px">{{ art.description }}</span></h5>
-
-
-                                </div>
-                            </div>
-                            <hr style="border-color: white">
-                            <h4>Likes : {{ art.likes_set.all.count }}</h4>
-                            <h4 class="card-title">Comments</h4>
-                            <hr>
-                            {% for comment in art.comments_set.all %}
-                                <h6 class="card-title">
-                                    <a style="text-decoration: none; color: black"
-                                       href="{% url 'profile_details' slug=comment.user.username pk=comment.user.pk %}">{{ comment.user.username }}</a>
-                                    : {{ comment.text }}</h6>
-                                <hr>
-                            {% endfor %}
-
-                            <form action="{% url 'add_comment_to_art_piece' art_piece_id=art.id %}" method="post">
-                                {% csrf_token %}
-                                Add a comment : {{ comment_form.text }}
-                                <button type="submit" class="btn btn-info">Post</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
+            {% include "collection_and_browse.html" %}
 
         {% endfor %}
 
     {% else %}
-        <div class="card text-bg-dark">
-            <img style="height: 845px"
-                 src="https://i0.wp.com/wpsites.net/wp-content/uploads/2013/05/no-posts-text1.png?fit=600%2C300&ssl=1"
-                 class="card-img" alt="...">
+        <div class="card text-bg-light mb-3" style="max-width: 25rem; left: 750px; top: 250px">
+            <div class="card-header" style="text-align: center"><h4>Nothing found</h4></div>
+            <div class="card-body">
+                <h5 style="text-align: center" class="card-title">Try adding an ArtPiece. </h5>
+                <button style="margin-left: 125px"><a style="text-decoration: none; color: black"
+                                                      href="{% url 'add_art_piece' %}">Add ArtPiece</a></button>
 
+            </div>
         </div>
     {% endif %}
 {% endblock %}

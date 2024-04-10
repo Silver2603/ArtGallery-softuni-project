@@ -35,7 +35,7 @@ class UserProfileView(LoginRequiredMixin, DetailView):
 
     def total_likes(self):
         all_likes = 0
-        user_art_pieces = ArtPiece.objects.filter(user_id=self.request.user.id)
+        user_art_pieces = ArtPiece.objects.filter(user_id=self.object.user.id)
         for art_piece in user_art_pieces:
             for like in Likes.objects.all():
                 if art_piece.id == like.to_art_piece_id:

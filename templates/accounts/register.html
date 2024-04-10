@@ -1,44 +1,41 @@
 {% extends "base.html" %}
+{% load static %}
 {% block main %}
 
+    <link rel="stylesheet" href="{% static "register_css.css" %}">
 
-    <div class="card text-bg-dark">
-        <img style="height: 840px"
-             src="https://collections.asianart.org/wp-content/uploads/sites/5/2020/05/B65S12_B65S13_hero-1485x675.jpg"
-             alt="...">
-        <div class="card-img-overlay">
-            <div class="card text-bg-light mb-3 card col-6 offset-4"
-                 style="max-width: 40rem; height: 45rem;margin-top: 30px">
-                <div class="card-header" style="text-align: center"><h3>Registration</h3></div>
-                <div class="card-body">
-                    <form action="{% url 'register' %}" method="post">
 
-                        {% csrf_token %}
-                        <hr style="margin: 10px; border-color: white">
-                        <a style="margin-left: 50px">{{ form.username.label }} : {{ form.username }}</a><br>
-                        <a style="margin-left: 50px">{{ form.username.help_text }}</a>
-                        <hr style="margin: 30px">
-                        <a style="margin-left: 50px">{{ form.email.label }} : {{ form.email }}</a><br>
-                        <a style="margin-left: 50px">The email address must contain @.</a>
-                        <hr style="margin: 30px">
-                        <a style="margin-left: 50px">{{ form.password1.label }} : {{ form.password1 }}</a>
-                        <a style="margin-left: 50px">{{ form.password1.help_text }}</a>
-                        <hr style="margin: 30px">
-                        <a style="margin-left: 50px">{{ form.password2.label }} : {{ form.password2 }}</a><br>
-                        <a style="margin-left: 50px">{{ form.password2.help_text }}</a>
-                        <hr style="margin: 30px">
+    <div class="card text-bg-light mb-3 card col-6 offset-4"
+         style="max-width: 40rem; height: 45rem;margin-top: 30px">
+        <div class="card-header" style="text-align: center"><h3>Registration</h3></div>
+        <div class="card-body">
+            <form action="{% url 'register' %}" method="post">
 
-                        <button style="margin-left: 245px; margin-top: 5px"
-                                class="btn btn-primary btn-lg">Sign
-                            Up
-                        </button>
+                {% csrf_token %}
+                <hr style="margin-bottom:35px; margin-top: 35px">
+                Username : {{ form.username }}
+                {{ form.username.errors }}
+                <hr style="margin-bottom:35px; margin-top: 40px">
+                Email : {{ form.email }}
+                {{ form.email.errors }}
+                <hr style="margin-bottom:35px; margin-top: 35px">
+                Password : {{ form.password1 }}
+                {{ form.password2.errors }}
+                <hr style="margin-bottom:35px; margin-top: 35px">
+                Repeat Password : {{ form.password2 }}
+                {{ form.password1.errors }}
 
-                    </form>
+                <button style="position: absolute; bottom: 50px; left: 260px"
+                        class="btn btn-primary btn-lg">Sign
+                    Up
+                </button>
 
-                </div>
-            </div>
+            </form>
+
         </div>
     </div>
+   
+
 
 
 {% endblock %}
